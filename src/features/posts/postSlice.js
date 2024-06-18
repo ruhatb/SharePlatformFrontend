@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import postsAPI from './postsAPI';
+import postsAPI from './postAPI';
 
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
   const response = await postsAPI.fetchPosts();
