@@ -1,11 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import NotFoundPage from './pages/NotFoundPage';
 import PrivateRoute from './components/PrivateRoute';
+import PostList from './components/PostList';
 
 function App() {
   return (
@@ -13,13 +14,13 @@ function App() {
       <div className="min-h-screen flex flex-col">
         <Navbar />
         <div className="flex-grow">
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/login" component={LoginPage} />
-            <Route path="/register" component={RegisterPage} />
-            <PrivateRoute path="/posts" component={PostList} />
-            <Route component={NotFoundPage} />
-          </Switch>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/posts" element={<PrivateRoute component={PostList} />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
         </div>
       </div>
     </Router>
