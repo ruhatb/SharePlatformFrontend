@@ -10,8 +10,8 @@ const CenterContent = () => {
 
   return (
     <div className="grid grid-cols-3 gap-4">
-      {postImages.map((src, index) => (
-        <img key={index} src={src} alt={`Post ${index + 1}`} className="w-full h-auto"/>
+      {postImages.map((url, index) => (
+        <img key={index} src={url} alt={`Post ${index + 1}`} className="w-full h-auto"/>
       ))}
     </div>
   );

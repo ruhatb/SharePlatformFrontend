@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
@@ -10,8 +11,18 @@ import PostList from './components/PostList';
 import LeftBar from './components/LeftBar';
 import CenterContent from './components/CenterContent';
 import RightBar from './components/RightBar';
+import { login } from './features/users/usersSlice';
 
 function App() {
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      dispatch(login.fulfilled({ payload: user }));
+    }
+  }, [dispatch]);
+
   return (
     <Router>
       <div className="min-h-screen flex flex-col">
